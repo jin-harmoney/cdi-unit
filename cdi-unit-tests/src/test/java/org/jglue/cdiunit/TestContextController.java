@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;

@@ -15,21 +15,15 @@
  */
 package org.jglue.cdiunit.internal.testscope;
 
-import javax.enterprise.event.Observes;
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.Extension;
-import javax.enterprise.inject.spi.ProcessAnnotatedType;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.ProcessAnnotatedType;
 
-import org.apache.deltaspike.core.api.literal.ApplicationScopedLiteral;
-import org.apache.deltaspike.core.api.literal.DependentScopeLiteral;
-import org.apache.deltaspike.core.util.metadata.builder.AnnotatedTypeBuilder;
 import org.jglue.cdiunit.IsolationLevel;
 import org.jglue.cdiunit.internal.TestConfiguration;
 
 public class TestScopeExtension implements Extension {
-
-	private static final ApplicationScopedLiteral APPLICATIONSCOPED = new ApplicationScopedLiteral();
-	private static final DependentScopeLiteral DEPENDENT = new DependentScopeLiteral();
 
 	private final TestConfiguration testConfiguration;
 
@@ -42,12 +36,12 @@ public class TestScopeExtension implements Extension {
 	}
 
 	<T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat) {
-		final AnnotatedType<T> annotatedType = pat.getAnnotatedType();
-		if (annotatedType.getJavaClass().equals(testConfiguration.getTestClass())) {
-			AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType)
-					.addToClass(testConfiguration.getIsolationLevel() == IsolationLevel.PER_CLASS ? DEPENDENT : APPLICATIONSCOPED);
-			pat.setAnnotatedType(builder.create());
-		}
+//		final AnnotatedType<T> annotatedType = pat.getAnnotatedType();
+//		if (annotatedType.getJavaClass().equals(testConfiguration.getTestClass())) {
+//			AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType)
+//					.addToClass(testConfiguration.getIsolationLevel() == IsolationLevel.PER_CLASS ? DEPENDENT : APPLICATIONSCOPED);
+//			pat.setAnnotatedType(builder.create());
+//		}
 	}
 
 }

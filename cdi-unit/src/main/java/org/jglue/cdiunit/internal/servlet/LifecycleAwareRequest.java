@@ -24,9 +24,9 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.inject.Inject;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import jakarta.inject.Inject;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 
 @CdiUnitServlet
 public class LifecycleAwareRequest implements HttpServletRequest {
@@ -78,6 +78,11 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	public int getContentLength() {
 		return delegate.getContentLength();
+	}
+
+	@Override
+	public long getContentLengthLong() {
+		return 0;
 	}
 
 	public String getContentType() {
@@ -216,10 +221,6 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 		return delegate.getServletPath();
 	}
 
-	public String getRealPath(String path) {
-		return delegate.getRealPath(path);
-	}
-
 	public int getRemotePort() {
 		return delegate.getRemotePort();
 	}
@@ -246,6 +247,11 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 		return getSession(true);
 	}
 
+	@Override
+	public String changeSessionId() {
+		return null;
+	}
+
 	public int getLocalPort() {
 		return delegate.getLocalPort();
 	}
@@ -268,10 +274,6 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	public boolean isRequestedSessionIdFromURL() {
 		return delegate.isRequestedSessionIdFromURL();
-	}
-
-	public boolean isRequestedSessionIdFromUrl() {
-		return delegate.isRequestedSessionIdFromUrl();
 	}
 
 	public boolean authenticate(HttpServletResponse response)
@@ -300,6 +302,11 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 		return delegate.getPart(name);
 	}
 
+	@Override
+	public <T extends HttpUpgradeHandler> T upgrade(Class<T> aClass) throws IOException, ServletException {
+		return null;
+	}
+
 	public boolean isAsyncSupported() {
 		return delegate.isAsyncSupported();
 	}
@@ -310,6 +317,21 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	public DispatcherType getDispatcherType() {
 		return delegate.getDispatcherType();
+	}
+
+	@Override
+	public String getRequestId() {
+		return null;
+	}
+
+	@Override
+	public String getProtocolRequestId() {
+		return null;
+	}
+
+	@Override
+	public ServletConnection getServletConnection() {
+		return null;
 	}
 
 	@Override

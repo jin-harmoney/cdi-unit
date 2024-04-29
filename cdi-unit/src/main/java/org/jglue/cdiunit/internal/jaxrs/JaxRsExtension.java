@@ -15,40 +15,39 @@
  */
 package org.jglue.cdiunit.internal.jaxrs;
 
-import javax.enterprise.event.Observes;
-import javax.enterprise.inject.spi.AnnotatedField;
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.Extension;
-import javax.enterprise.inject.spi.ProcessAnnotatedType;
-import javax.enterprise.util.AnnotationLiteral;
-import javax.inject.Inject;
-import javax.ws.rs.core.Context;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.spi.AnnotatedField;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.ProcessAnnotatedType;
+import jakarta.enterprise.util.AnnotationLiteral;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Context;
 
-import org.apache.deltaspike.core.util.metadata.builder.AnnotatedTypeBuilder;
 
 public class JaxRsExtension implements Extension {
 
 	public <T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat) {
 
-		boolean modified = false;
-		AnnotatedType<T> annotatedType = pat.getAnnotatedType();
-		AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType);
-
-		
-		for (AnnotatedField field : annotatedType.getFields()) {
-			Context context = field.getAnnotation(Context.class);
-			if (context != null) {
-				builder.addToField(field, new AnnotationLiteral<Inject>() {
-				});
-				
-				builder.addToField(field, new AnnotationLiteral<JaxRsQualifier>() {
-				});
-				modified = true;
-			}
-		}
-		if (modified) {
-			pat.setAnnotatedType(builder.create());
-		}
+//		boolean modified = false;
+//		AnnotatedType<T> annotatedType = pat.getAnnotatedType();
+//		AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType);
+//
+//
+//		for (AnnotatedField field : annotatedType.getFields()) {
+//			Context context = field.getAnnotation(Context.class);
+//			if (context != null) {
+//				builder.addToField(field, new AnnotationLiteral<Inject>() {
+//				});
+//
+//				builder.addToField(field, new AnnotationLiteral<JaxRsQualifier>() {
+//				});
+//				modified = true;
+//			}
+//		}
+//		if (modified) {
+//			pat.setAnnotatedType(builder.create());
+//		}
 	}
 
 }

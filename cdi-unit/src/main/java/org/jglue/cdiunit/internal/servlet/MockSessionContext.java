@@ -15,11 +15,16 @@
  */
 package org.jglue.cdiunit.internal.servlet;
 
+import java.lang.annotation.Annotation;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
+import jakarta.enterprise.context.spi.Contextual;
+import jakarta.enterprise.context.spi.CreationalContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+import org.jboss.weld.context.http.HttpSessionContext;
 
 /**
  * Mock implementation of <code>HttpSessionContext</code>.
@@ -27,7 +32,7 @@ import javax.servlet.http.HttpSessionContext;
 public class MockSessionContext implements HttpSessionContext
 {
     public Enumeration getIds()
-    { 
+    {
         return new Vector().elements();
     }
 
@@ -35,4 +40,63 @@ public class MockSessionContext implements HttpSessionContext
     {
         return null;
     }
+
+	@Override
+	public void activate() {
+
+	}
+
+	@Override
+	public void deactivate() {
+
+	}
+
+	@Override
+	public void invalidate() {
+	}
+
+	@Override
+	public boolean isValid() {
+		return false;
+	}
+
+	@Override
+	public boolean destroy(HttpSession httpSession) {
+		return false;
+	}
+
+	@Override
+	public boolean associate(HttpServletRequest httpServletRequest) {
+		return false;
+	}
+
+	@Override
+	public boolean dissociate(HttpServletRequest httpServletRequest) {
+		return false;
+	}
+
+	@Override
+	public void destroy(Contextual<?> contextual) {
+
+	}
+
+	@Override
+	public Class<? extends Annotation> getScope() {
+		return null;
+	}
+
+	@Override
+	public <T> T get(Contextual<T> contextual, CreationalContext<T> creationalContext) {
+		return null;
+	}
+
+	@Override
+	public <T> T get(Contextual<T> contextual) {
+		return null;
+	}
+
+	@Override
+	public boolean isActive() {
+		return false;
+	}
 }

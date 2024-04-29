@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jglue.cdi-unit</groupId>
 		<artifactId>cdi-unit-parent</artifactId>
-		<version>4.1.1-SNAPSHOT</version>
+		<version>5.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<name>CDI-Unit</name>
@@ -27,14 +27,14 @@
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-core</artifactId>
-			<version>3.0.5.Final</version>
+			<version>5.1.2.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- For Weld 3, we need this artifact to get WeldInitialListener -->
 		<dependency>
 			<groupId>org.jboss.weld.module</groupId>
 			<artifactId>weld-web</artifactId>
-			<version>3.0.5.Final</version>
+			<version>5.1.2.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -70,9 +70,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -87,21 +87,21 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.18</version>
+			<groupId>jakarta.faces</groupId>
+			<artifactId>jakarta.faces-api</artifactId>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2.2</version>
+			<groupId>jakarta.ejb</groupId>
+			<artifactId>jakarta.ejb-api</artifactId>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.1.1</version>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -117,9 +117,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.6.Final</version>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.7.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -136,8 +136,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.6.2.Final</version>
+			<artifactId>resteasy-core</artifactId>
+			<version>6.1.0.Final</version>
 		</dependency>
 	</dependencies>
 	<build>

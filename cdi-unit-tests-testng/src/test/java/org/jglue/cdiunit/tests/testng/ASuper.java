@@ -1,7 +1,7 @@
 package org.jglue.cdiunit.tests.testng;
 
 import javax.enterprise.inject.spi.BeanManager;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 public class ASuper {
 	@Inject
