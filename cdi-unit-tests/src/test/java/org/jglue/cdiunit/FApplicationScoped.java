@@ -1,6 +1,6 @@
 package org.jglue.cdiunit;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.concurrent.atomic.AtomicInteger;
 

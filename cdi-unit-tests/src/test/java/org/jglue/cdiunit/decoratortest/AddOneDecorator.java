@@ -1,7 +1,7 @@
 package org.jglue.cdiunit.decoratortest;
 
-import javax.decorator.Decorator;
-import javax.decorator.Delegate;
+import jakarta.decorator.Decorator;
+import jakarta.decorator.Delegate;
 import jakarta.enterprise.inject.Any;
 import jakarta.inject.Inject;
 
