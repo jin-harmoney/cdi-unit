@@ -1,5 +1,6 @@
 package org.jglue.cdiunit;
 
+import jakarta.faces.annotation.View;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -9,8 +10,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.Serializable;
+
 @RunWith(CdiRunner.class)
-public class TestViewScope {
+public class TestViewScope implements Serializable {
 	@Inject
 	private Provider<ViewScopedClass> viewScoped;
 
@@ -40,7 +43,7 @@ public class TestViewScope {
 
 	@ViewScoped
 	@Named
-	static class ViewScopedClass {
+	static class ViewScopedClass implements Serializable {
 		private static int timesConstructed;
 		public ViewScopedClass() {
 			timesConstructed++;
@@ -56,7 +59,7 @@ public class TestViewScope {
 	 */
 	@ViewScoped
 	@Named
-	static class G2ViewScoped {
+	static class G2ViewScoped implements Serializable {
 		@Inject
 		private ViewScopedClass g1ViewScoped;
 		private static int timesConstructed;

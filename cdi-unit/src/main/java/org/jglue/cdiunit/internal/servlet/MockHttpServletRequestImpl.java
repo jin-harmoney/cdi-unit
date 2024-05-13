@@ -527,7 +527,7 @@ public class MockHttpServletRequestImpl implements HttpServletRequest {
 
 	@Override
 	public long getContentLengthLong() {
-		return 0;
+		return contentLength;
 	}
 
 	public void setContentLength(int contentLength) {

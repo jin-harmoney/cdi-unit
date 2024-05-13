@@ -30,7 +30,6 @@ public class MockitoExtension implements Extension {
 	public <T> void process(@Observes ProcessInjectionTarget<T> event) {
 		final InjectionTarget<T> injectionTarget = event.getInjectionTarget();
 		event.setInjectionTarget(new InjectionTarget<T>() {
-
 			public T produce(CreationalContext<T> ctx) {
 				T o = injectionTarget.produce(ctx);
 				MockitoAnnotations.initMocks(o);

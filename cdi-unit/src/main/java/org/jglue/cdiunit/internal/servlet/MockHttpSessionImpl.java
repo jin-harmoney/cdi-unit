@@ -233,10 +233,6 @@ public class MockHttpSessionImpl implements HttpSession {
 		return maxInactiveInterval;
 	}
 
-	public synchronized HttpSessionContext getSessionContext() {
-		return new MockSessionContext();
-	}
-
 	private synchronized void callAttributeListenersAddedMethod(String key,
 																Object value) {
 		for (int ii = 0; ii < attributeListener.size(); ii++) {

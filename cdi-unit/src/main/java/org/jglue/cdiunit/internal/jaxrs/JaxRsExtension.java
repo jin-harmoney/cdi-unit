@@ -16,10 +16,9 @@
 package org.jglue.cdiunit.internal.jaxrs;
 
 import jakarta.enterprise.event.Observes;
-import jakarta.enterprise.inject.spi.AnnotatedField;
-import jakarta.enterprise.inject.spi.AnnotatedType;
 import jakarta.enterprise.inject.spi.Extension;
 import jakarta.enterprise.inject.spi.ProcessAnnotatedType;
+import jakarta.enterprise.inject.spi.configurator.AnnotatedTypeConfigurator;
 import jakarta.enterprise.util.AnnotationLiteral;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Context;
@@ -28,26 +27,12 @@ import jakarta.ws.rs.core.Context;
 public class JaxRsExtension implements Extension {
 
 	public <T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat) {
-
-//		boolean modified = false;
-//		AnnotatedType<T> annotatedType = pat.getAnnotatedType();
-//		AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType);
-//
-//
-//		for (AnnotatedField field : annotatedType.getFields()) {
-//			Context context = field.getAnnotation(Context.class);
-//			if (context != null) {
-//				builder.addToField(field, new AnnotationLiteral<Inject>() {
-//				});
-//
-//				builder.addToField(field, new AnnotationLiteral<JaxRsQualifier>() {
-//				});
-//				modified = true;
-//			}
-//		}
-//		if (modified) {
-//			pat.setAnnotatedType(builder.create());
-//		}
+		AnnotatedTypeConfigurator<T> typeConfigurator = pat.configureAnnotatedType();
+		typeConfigurator.filterFields(annotatedField -> annotatedField.getAnnotation(Context.class) != null)
+			.forEach(fieldConfigurator -> {
+				fieldConfigurator.add(new AnnotationLiteral<Inject>() {});
+				fieldConfigurator.add(new AnnotationLiteral<JaxRsQualifier>() { });
+			});
 	}
 
 }

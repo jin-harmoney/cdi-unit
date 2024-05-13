@@ -82,7 +82,7 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	@Override
 	public long getContentLengthLong() {
-		return 0;
+		return delegate.getContentLengthLong();
 	}
 
 	public String getContentType() {
@@ -249,7 +249,7 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	@Override
 	public String changeSessionId() {
-		return null;
+		return delegate.changeSessionId();
 	}
 
 	public int getLocalPort() {
@@ -304,7 +304,7 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	@Override
 	public <T extends HttpUpgradeHandler> T upgrade(Class<T> aClass) throws IOException, ServletException {
-		return null;
+		return delegate.upgrade(aClass);
 	}
 
 	public boolean isAsyncSupported() {
@@ -321,17 +321,17 @@ public class LifecycleAwareRequest implements HttpServletRequest {
 
 	@Override
 	public String getRequestId() {
-		return null;
+		return delegate.getRequestId();
 	}
 
 	@Override
 	public String getProtocolRequestId() {
-		return null;
+		return delegate.getProtocolRequestId()	;
 	}
 
 	@Override
 	public ServletConnection getServletConnection() {
-		return null;
+		return delegate.getServletConnection();
 	}
 
 	@Override

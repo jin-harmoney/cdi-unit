@@ -15,6 +15,8 @@
  */
 package org.jglue.cdiunit.internal.testscope;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.inject.spi.AnnotatedType;
 import jakarta.enterprise.inject.spi.Extension;
@@ -36,12 +38,11 @@ public class TestScopeExtension implements Extension {
 	}
 
 	<T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat) {
-//		final AnnotatedType<T> annotatedType = pat.getAnnotatedType();
-//		if (annotatedType.getJavaClass().equals(testConfiguration.getTestClass())) {
-//			AnnotatedTypeBuilder<T> builder = new AnnotatedTypeBuilder<T>().readFromType(annotatedType)
-//					.addToClass(testConfiguration.getIsolationLevel() == IsolationLevel.PER_CLASS ? DEPENDENT : APPLICATIONSCOPED);
-//			pat.setAnnotatedType(builder.create());
-//		}
+		final AnnotatedType<T> annotatedType = pat.getAnnotatedType();
+		if (testConfiguration != null && annotatedType.getJavaClass().equals(testConfiguration.getTestClass())) {
+			pat.configureAnnotatedType().add(
+				testConfiguration.getIsolationLevel() == IsolationLevel.PER_CLASS ? Dependent.Literal.INSTANCE : ApplicationScoped.Literal.INSTANCE);
+		}
 	}
 
 }

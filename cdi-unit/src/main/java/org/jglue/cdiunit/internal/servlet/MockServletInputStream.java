@@ -40,16 +40,16 @@ public class MockServletInputStream extends ServletInputStream
 
 	@Override
 	public boolean isFinished() {
-		return false;
+		return stream.available() <= 0;
 	}
 
 	@Override
 	public boolean isReady() {
-		return false;
+		return stream.available() > 0;
 	}
 
 	@Override
 	public void setReadListener(ReadListener readListener) {
-
+		throw new UnsupportedOperationException();
 	}
 }

@@ -36,12 +36,12 @@ public class MockServletOutputStream extends ServletOutputStream
 
 	@Override
 	public boolean isReady() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public void setWriteListener(WriteListener writeListener) {
-
+		throw new UnsupportedOperationException();
 	}
 
 	public MockServletOutputStream(String encoding)

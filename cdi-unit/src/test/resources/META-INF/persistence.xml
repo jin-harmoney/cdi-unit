@@ -3,7 +3,7 @@
 
 	<persistence-unit name="DefaultPersistenceUnit">
 
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>org.jglue.cdiunit.deltaspike.TestEntity</class>
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
