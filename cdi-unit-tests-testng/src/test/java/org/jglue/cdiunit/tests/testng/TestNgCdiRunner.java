@@ -1,6 +1,6 @@
 package org.jglue.cdiunit.tests.testng;
 
-import javax.enterprise.context.ContextNotActiveException;
+import jakarta.enterprise.context.ContextNotActiveException;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 
