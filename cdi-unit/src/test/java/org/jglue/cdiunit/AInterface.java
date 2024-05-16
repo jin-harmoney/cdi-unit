@@ -16,8 +16,5 @@
 package org.jglue.cdiunit;
 
 public interface AInterface {
-	default void printMe() {
-		System.out.println(this.getClass().getName());
-	}
 
 }

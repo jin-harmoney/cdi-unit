@@ -91,21 +91,7 @@ public class TestEjb {
 
 	@Stateless
 	public static class EJBA implements EJBI {
-//		private String id;
 
-//		public EJBA(String id) {
-//			this.id = id;
-//		}
-
-//		public EJBA() {
-//			id= UUID.randomUUID().toString();
-//			System.out.println("Creating with id: " + id);
-//		}
-
-//		@Override
-//		public String toString() {
-//			return id + super.toString();
-//		}
 	}
 
 	@Stateless(name = "statelessNamed")
